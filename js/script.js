@@ -14,9 +14,9 @@ il software mostra in un alert quanti e quali dei numeri da indovinare sono stat
 var cpuList = [];
 var userNumber = [];
 var resultDisplay = document.getElementById('result');
-var timer = 30;
 
-resultDisplay.innerText = timer
+var timer = 5;
+resultDisplay.innerText = timer;
 
 while (cpuList.length < 5) {
     var cpuNumber = randomNumber(20, 1);
@@ -24,15 +24,17 @@ while (cpuList.length < 5) {
         cpuList.push(cpuNumber)
     }
 }
-alert('Il computer ha generato i seguenti numeri ' + '\n' + cpuList);
+alert('Il computer ha generato i seguenti numeri ' + '\n' + cpuList + '\n' + 'Ricordali per 30 secondi');
 
-setInterval(function () {
+//? Variable for stop interval
+var stop = setInterval(my_timer, 1000);
+function my_timer() {
+    timer--;
+    resultDisplay.innerText = timer;
     if (timer === 0) {
-        //Chiedo i numeri all'utente e stoppo l'intervallo
-    } else {
-        resultDisplay.innerText = timer;
+        clearInterval(stop);
     }
-}, 1000);
+}
 
 
 

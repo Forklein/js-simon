@@ -3,3 +3,24 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body{
+    height: 100vh;
+    background-color: chocolate;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.test{
+    border: 5px solid blueviolet;
+}
+
+p{
+    background-color: white;
+    font-size: 100px;
+    border-radius: 50%;
+    padding: 15px;
+}
+
