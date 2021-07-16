@@ -14,14 +14,16 @@ il software mostra in un alert quanti e quali dei numeri da indovinare sono stat
 var cpuList = [];
 var userList = [];
 var equalList = [];
+
 var resultDisplay = document.getElementById('result');
-var boxDisplay = document.getElementById('box');
+var timerDisplay = document.getElementById('box-timer');
+var pointDisplay = document.getElementById('point');
 
 var timer = 5;
 resultDisplay.innerText = timer;
 
 while (cpuList.length < 5) {
-    var cpuNumber = randomNumber(20, 1);
+    var cpuNumber = randomNumber(50, 1);
     if (!cpuList.includes(cpuNumber)) {
         cpuList.push(cpuNumber);
     }
@@ -31,7 +33,7 @@ alert('Il computer ha generato i seguenti numeri ' + '\n' + cpuList + '\n' + 'Ri
 
 //? Variable for stop interval
 var stop = setInterval(my_timer, 1000);
-boxDisplay.classList.remove('d-none');
+timerDisplay.classList.remove('d-none');
 
 //! Function Timer
 
@@ -40,7 +42,7 @@ function my_timer() {
     resultDisplay.innerText = timer;
     if (timer === -1) {
         clearInterval(stop);
-        boxDisplay.classList.add('d-none');
+        timerDisplay.classList.add('d-none');
         game();
     }
 }
@@ -48,9 +50,10 @@ function my_timer() {
 function game() {
     var userNumber;
     do {
-        var userNumber = parseInt(prompt('Inserisci i numeri uno alla volta:'));
-        if (!userList.includes(userNumber)) {
+        var userNumber = parseInt(prompt('Inserisci 5 numeri uno alla volta (da 1 a 50):'));
+        if (!userList.includes(userNumber) && userNumber <= 50) {
             userList.push(userNumber);
+            console.log(userList)
             if (cpuList.includes(userNumber)) {
                 equalList.push(userNumber);
             }
@@ -58,12 +61,12 @@ function game() {
     } while (!userNumber || userList.length < 5);
     if (equalList.length === 0) {
         alert('Non hai indovinato nessun numero!');
+        pointDisplay.innerText = 'Non hai indovinato nessun numero!'
     } else {
-        alert('Complimenti hai indovinato ' + equalList.length + ' su 5!');
+        alert('Il tuo punteggio è di ' + equalList.length + ' su 5!');
+        pointDisplay.innerText = 'Il tuo punteggio è di ' + equalList.length + ' su 5!';
     }
 }
-
-
 
 //! Function random number Max included
 function randomNumber(max, min) {
