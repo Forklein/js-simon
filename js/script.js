@@ -47,9 +47,9 @@ function my_timer() {
             }
         } while (!userNumber || userList.length < 5);
         if (equalList.length === 0) {
-            alert('Hai perso')
+            alert('Non hai indovinato nessun numero!');
         } else {
-            alert('Complimenti hai indovinato ' + equalList.length + ' su 5!')
+            alert('Complimenti hai indovinato ' + equalList.length + ' su 5!');
         }
     }
 }
