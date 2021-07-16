@@ -19,7 +19,7 @@ const resultDisplay = document.getElementById('result');
 const timerDisplay = document.getElementById('box-timer');
 const pointDisplay = document.getElementById('point');
 
-let timer = 5;
+let timer = 30;
 resultDisplay.innerText = timer;
 
 while (cpuList.length < 5) {
@@ -57,6 +57,8 @@ function game() {
             if (cpuList.includes(userNumber)) {
                 equalList.push(userNumber);
             }
+        } else {
+            alert('Non fare il furbo!');
         }
     } while (!userNumber || userList.length < 5);
     if (equalList.length === 0) {
