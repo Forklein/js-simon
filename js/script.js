@@ -15,6 +15,7 @@ var cpuList = [];
 var userList = [];
 var equalList = [];
 var resultDisplay = document.getElementById('result');
+var boxDisplay = document.getElementById('box');
 
 var timer = 5;
 resultDisplay.innerText = timer;
@@ -30,29 +31,39 @@ alert('Il computer ha generato i seguenti numeri ' + '\n' + cpuList + '\n' + 'Ri
 
 //? Variable for stop interval
 var stop = setInterval(my_timer, 1000);
+boxDisplay.classList.remove('d-none');
+
 //! Function Timer
+
 function my_timer() {
     timer--;
     resultDisplay.innerText = timer;
-    if (timer === 0) {
+    if (timer === -1) {
         clearInterval(stop);
-        var userNumber;
-        do {
-            var userNumber = parseInt(prompt('Inserisci i numeri uno alla volta:'));
-            if (!userList.includes(userNumber)) {
-                userList.push(userNumber);
-                if (cpuList.includes(userNumber)) {
-                    equalList.push(userNumber);
-                }
-            }
-        } while (!userNumber || userList.length < 5);
-        if (equalList.length === 0) {
-            alert('Non hai indovinato nessun numero!');
-        } else {
-            alert('Complimenti hai indovinato ' + equalList.length + ' su 5!');
-        }
+        boxDisplay.classList.add('d-none');
+        game();
     }
 }
+
+function game() {
+    var userNumber;
+    do {
+        var userNumber = parseInt(prompt('Inserisci i numeri uno alla volta:'));
+        if (!userList.includes(userNumber)) {
+            userList.push(userNumber);
+            if (cpuList.includes(userNumber)) {
+                equalList.push(userNumber);
+            }
+        }
+    } while (!userNumber || userList.length < 5);
+    if (equalList.length === 0) {
+        alert('Non hai indovinato nessun numero!');
+    } else {
+        alert('Complimenti hai indovinato ' + equalList.length + ' su 5!');
+    }
+}
+
+
 
 //! Function random number Max included
 function randomNumber(max, min) {

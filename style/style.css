@@ -17,6 +17,10 @@ body{
     border: 5px solid blueviolet;
 }
 
+.d-none{
+    display: none;
+}
+
 p{
     background-color: white;
     font-size: 100px;
