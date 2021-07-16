@@ -11,19 +11,19 @@ il software mostra in un alert quanti e quali dei numeri da indovinare sono stat
 
 
 
-var cpuList = [];
-var userList = [];
-var equalList = [];
+const cpuList = [];
+const userList = [];
+const equalList = [];
 
-var resultDisplay = document.getElementById('result');
-var timerDisplay = document.getElementById('box-timer');
-var pointDisplay = document.getElementById('point');
+const resultDisplay = document.getElementById('result');
+const timerDisplay = document.getElementById('box-timer');
+const pointDisplay = document.getElementById('point');
 
-var timer = 5;
+let timer = 5;
 resultDisplay.innerText = timer;
 
 while (cpuList.length < 5) {
-    var cpuNumber = randomNumber(50, 1);
+    const cpuNumber = randomNumber(50, 1);
     if (!cpuList.includes(cpuNumber)) {
         cpuList.push(cpuNumber);
     }
@@ -32,7 +32,7 @@ console.log(cpuList);
 alert('Il computer ha generato i seguenti numeri ' + '\n' + cpuList + '\n' + 'Ricordali per 30 secondi');
 
 //? Variable for stop interval
-var stop = setInterval(my_timer, 1000);
+const stop = setInterval(my_timer, 1000);
 timerDisplay.classList.remove('d-none');
 
 //! Function Timer
@@ -48,9 +48,9 @@ function my_timer() {
 }
 
 function game() {
-    var userNumber;
+    let userNumber;
     do {
-        var userNumber = parseInt(prompt('Inserisci 5 numeri uno alla volta (da 1 a 50):'));
+        userNumber = parseInt(prompt('Inserisci 5 numeri uno alla volta (da 1 a 50):'));
         if (!userList.includes(userNumber) && userNumber <= 50) {
             userList.push(userNumber);
             console.log(userList)
