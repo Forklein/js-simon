@@ -13,6 +13,7 @@ il software mostra in un alert quanti e quali dei numeri da indovinare sono stat
 
 var cpuList = [];
 var userList = [];
+var equalList = [];
 var resultDisplay = document.getElementById('result');
 
 var timer = 5;
@@ -29,7 +30,6 @@ alert('Il computer ha generato i seguenti numeri ' + '\n' + cpuList + '\n' + 'Ri
 
 //? Variable for stop interval
 var stop = setInterval(my_timer, 1000);
-
 //! Function Timer
 function my_timer() {
     timer--;
@@ -41,10 +41,19 @@ function my_timer() {
             var userNumber = parseInt(prompt('Inserisci i numeri uno alla volta:'));
             if (!userList.includes(userNumber)) {
                 userList.push(userNumber);
+                if (cpuList.includes(userNumber)) {
+                    equalList.push(userNumber);
+                }
             }
         } while (!userNumber || userList.length < 5);
+        if (equalList.length === 0) {
+            alert('Hai perso')
+        } else {
+            alert('Complimenti hai indovinato ' + equalList.length + ' su 5!')
+        }
     }
 }
+
 //! Function random number Max included
 function randomNumber(max, min) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
