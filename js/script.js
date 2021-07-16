@@ -47,6 +47,7 @@ function my_timer() {
     }
 }
 
+//! Function game start with control number and print in html the result
 function game() {
     let userNumber;
     do {
