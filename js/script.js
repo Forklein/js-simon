@@ -10,9 +10,13 @@ il software mostra in un alert quanti e quali dei numeri da indovinare sono stat
 (Bonus: stampare in pagina il risultato, in alternativa all'alert.) */
 
 
-//! Function random number Max included
+
 var cpuList = [];
 var userNumber = [];
+var resultDisplay = document.getElementById('result');
+var timer = 30;
+
+resultDisplay.innerText = timer
 
 while (cpuList.length < 5) {
     var cpuNumber = randomNumber(20, 1);
@@ -20,8 +24,23 @@ while (cpuList.length < 5) {
         cpuList.push(cpuNumber)
     }
 }
-console.log(cpuList);
+alert('Il computer ha generato i seguenti numeri ' + '\n' + cpuList);
 
+setInterval(function () {
+    if (timer === 0) {
+        //Chiedo i numeri all'utente e stoppo l'intervallo
+    } else {
+        resultDisplay.innerText = timer;
+    }
+}, 1000);
+
+
+
+
+
+
+
+//! Function random number Max included
 function randomNumber(max, min) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
