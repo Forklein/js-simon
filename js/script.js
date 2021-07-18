@@ -18,8 +18,9 @@ const equalList = [];
 const resultDisplay = document.getElementById('result');
 const timerDisplay = document.getElementById('box-timer');
 const pointDisplay = document.getElementById('point');
+const numberDisplay = document.getElementById('point-number');
 
-let timer = 30;
+let timer = 5;
 resultDisplay.innerText = timer;
 
 while (cpuList.length < 5) {
@@ -38,13 +39,13 @@ timerDisplay.classList.remove('d-none');
 //! Function Timer
 
 function my_timer() {
-    timer--;
-    resultDisplay.innerText = timer;
-    if (timer === -1) {
+    if (timer === 0) {
         clearInterval(stop);
         timerDisplay.classList.add('d-none');
         game();
     }
+    timer--;
+    resultDisplay.innerText = timer;
 }
 
 //! Function game start with control number and print in html the result
@@ -52,7 +53,7 @@ function game() {
     let userNumber;
     do {
         userNumber = parseInt(prompt('Inserisci 5 numeri uno alla volta (da 1 a 50):'));
-        if (!userList.includes(userNumber) && userNumber <= 50) {
+        if (!userList.includes(userNumber) && userNumber <= 50 && userNumber > 0) {
             userList.push(userNumber);
             console.log(userList)
             if (cpuList.includes(userNumber)) {
@@ -68,6 +69,7 @@ function game() {
     } else {
         alert('Il tuo punteggio è di ' + equalList.length + ' su 5!');
         pointDisplay.innerText = 'Il tuo punteggio è di ' + equalList.length + ' su 5!';
+        numberDisplay.innerText = 'Hai ricordato i seguenti numeri ' + equalList;
     }
 }
 

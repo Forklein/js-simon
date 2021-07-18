@@ -40,7 +40,8 @@ p{
     padding: 15px;
 }
 
-#point{
+#point,
+#point-number{
     background-color: initial;
     text-shadow: 1px 1px 5px gold;
     font-size: 50px;
